@@ -1,0 +1,13 @@
+name: "My C++ Action"
+description: "A custom GitHub Action written in C++"
+author: "Your Name <your-email@example.com>"
+inputs:
+  exampleInput:
+    description: "An example input"
+    required: true
+    default: "world"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.exampleInput }}
