@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY convert-svg-to-png.py entrypoint.sh ./
 
 # Ensure the entrypoint script is executable
-RUN chmod +x /entrypoint.sh
+RUN chmod +x ./entrypoint.sh
 
 # Run the entrypoint script
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
