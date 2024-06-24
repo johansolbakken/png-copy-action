@@ -9,6 +9,7 @@ GITHUB_TOKEN=$3
 python convert-svg-to-png.py $SVG_FOLDER $PNG_FOLDER
 
 # Configure git
+git config --global --add safe.directory /github/workspace
 git config --global user.name "github-actions[bot]"
 git config --global user.email "github-actions[bot]@users.noreply.github.com"
 

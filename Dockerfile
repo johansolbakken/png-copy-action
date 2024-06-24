@@ -11,11 +11,8 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the Python script into the container
-COPY convert-svg-to-png.py ./
-
-# Copy the entrypoint script into the container
-COPY entrypoint.sh /entrypoint.sh
+# Copy the Python script and entrypoint script into the container
+COPY convert-svg-to-png.py entrypoint.sh ./
 
 # Ensure the entrypoint script is executable
 RUN chmod +x /entrypoint.sh
