@@ -1,21 +1,21 @@
-# Use an official Ubuntu as a parent image
-FROM ubuntu:20.04
+# Use the official Python image from the Docker Hub
+FROM python:3.9-slim
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    g++ \
-    cmake \
-    make \
-    libpng-dev
+# Set the working directory in the container
+WORKDIR /usr/src/app
 
-# Copy the current directory contents into the container at /action
-COPY . /action
+# Copy the requirements file and install dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Set the working directory to /action
-WORKDIR /action
+# Copy the Python script into the container
+COPY convert-svg-to-png.py ./
 
-# Build the C++ code
-RUN cmake . && make
+# Copy the entrypoint script into the container
+COPY entrypoint.sh /entrypoint.sh
 
-# Run the action
-ENTRYPOINT ["/action/entrypoint.sh"]
+# Ensure the entrypoint script is executable
+RUN chmod +x /entrypoint.sh
+
+# Run the entrypoint script
+ENTRYPOINT ["/entrypoint.sh"]

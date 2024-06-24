@@ -1,7 +1,18 @@
-name: "My C++ Action"
-description: "Ensure PNG copies of SVG files"
-author: "Your Name <your-email@example.com>"
-
+name: 'SVG to PNG Converter'
+description: 'A GitHub Action to convert SVG files to PNG'
+author: 'Your Name'
+inputs:
+  svg-folder:
+    description: 'The folder containing SVG files'
+    required: true
+    default: 'svg-files'
+  png-folder:
+    description: 'The folder to store converted PNG files'
+    required: true
+    default: 'png-copy'
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.svg-folder }}
+    - ${{ inputs.png-folder }}
