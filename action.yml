@@ -1,13 +1,7 @@
 name: "My C++ Action"
-description: "A custom GitHub Action written in C++"
+description: "Ensure PNG copies of SVG files"
 author: "Your Name <your-email@example.com>"
-inputs:
-  exampleInput:
-    description: "An example input"
-    required: true
-    default: "world"
+
 runs:
   using: "docker"
   image: "Dockerfile"
-  args:
-    - ${{ inputs.exampleInput }}

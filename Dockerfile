@@ -5,7 +5,8 @@ FROM ubuntu:20.04
 RUN apt-get update && apt-get install -y \
     g++ \
     cmake \
-    make
+    make \
+    libpng-dev
 
 # Copy the current directory contents into the container at /action
 COPY . /action
@@ -14,7 +15,7 @@ COPY . /action
 WORKDIR /action
 
 # Build the C++ code
-RUN g++ -o my-action main.cpp
+RUN cmake . && make
 
 # Run the action
 ENTRYPOINT ["/action/entrypoint.sh"]
