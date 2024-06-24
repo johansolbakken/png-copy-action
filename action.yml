@@ -10,9 +10,13 @@ inputs:
     description: 'The folder to store converted PNG files'
     required: true
     default: 'png-copy'
+  github-token:
+    description: 'GitHub token to commit changes'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.svg-folder }}
     - ${{ inputs.png-folder }}
+    - ${{ inputs.github-token }}

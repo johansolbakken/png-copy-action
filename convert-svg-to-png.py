@@ -32,9 +32,10 @@ def main(svg_folder, png_folder):
         print(f"Deleted outdated PNG file: {png_file}")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python convert-svg-to-png.py <svg_folder> <png_folder>")
+    if len(sys.argv) != 4:
+        print("Usage: python convert-svg-to-png.py <svg_folder> <png_folder> <github_token>")
         sys.exit(1)
     svg_folder = sys.argv[1]
     png_folder = sys.argv[2]
+    github_token = sys.argv[3]
     main(svg_folder, png_folder)
